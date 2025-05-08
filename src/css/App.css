@@ -1,0 +1,20 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+  .container .body{
+    display: flex;
+    flex-grow: 1;
+  }
+
+  .container .content{
+    flex: 1 ;
+    padding:20px
+  }
