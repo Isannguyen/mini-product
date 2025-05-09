@@ -5,16 +5,15 @@ body {
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 230px auto;
 }
 
-  .container .body{
-    display: flex;
-    flex-grow: 1;
-  }
 
-  .container .content{
-    flex: 1 ;
-    padding:20px
-  }
+.container .content {
+  display: block; 
+  padding: 20px;
+}
+
+
+

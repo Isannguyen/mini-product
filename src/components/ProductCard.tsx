@@ -4,6 +4,7 @@ interface Product {
   id: number;
   title: string;
   price: number;
+  category:string;
   image: string;
 }
 
@@ -19,10 +20,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToFavorites }) 
         <img src={product.image} alt={product.title} />
       </div>
       
-      <p>{product.title}</p>
+      <p className="title">{product.title}</p>
 
       <p>Price: ${product.price}</p>
-        
+    
+      <p>Category: ${product.category}</p>
       <button onClick={() => onAddToFavorites(product)}>Add to Favorite</button>
     </div>
   );
