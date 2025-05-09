@@ -5,28 +5,29 @@ import ProductCard from '../components/ProductCard';
 const ProductFavoritePage: React.FC = () => {
   const [favoriteProducts, setFavoriteProducts] = useState<any[]>([]);
 
+  const fetchFavoriteProducts = async (favoritesIds: number[]) => {
+    try {
+      const fetchedProducts = await Promise.all(
+        favoritesIds.map((id: number) =>
+          axios.get(`https://fakestoreapi.com/products/${id}`).then((response) => response.data)
+        )
+      );
+      setFavoriteProducts(fetchedProducts); // Lưu sản phẩm vào state
+    } catch (error) {
+      console.error('Error fetching product by id', error);
+    }
+  };
+
   useEffect(() => {
     const favoritesIds = JSON.parse(localStorage.getItem('favorites') || '[]');
+    if (favoritesIds.length > 0) {
+      fetchFavoriteProducts(favoritesIds);
+    }
+  }, []); 
 
-    const fetchFavoriteProducts = async () => {
-      try {
-        const fetchedProducts = await Promise.all(
-          favoritesIds.map((id: number) =>
-            axios.get(`https://fakestoreapi.com/products/${id}`).then((response) => response.data)
-          )
-        );
-        setFavoriteProducts(fetchedProducts);
-      } catch (error) {
-        console.log('error fetching product by id',error); 
-      }
-    };
-
-    fetchFavoriteProducts();
-  }, []);
-
-  const handleAddToFavorites = (product:any) => {
-    console.log('hello')
-  }
+  const handleAddToFavorites = (product: any) => {
+    console.log('Product added to favorites', product);
+  };
 
   return (
     <div>
@@ -37,9 +38,9 @@ const ProductFavoritePage: React.FC = () => {
       ) : (
         <div className="product-list">
           {favoriteProducts.map((product) => (
-          <ProductCard key={product.id} product={product} onAddToFavorites={handleAddToFavorites} />
+            <ProductCard key={product.id} product={product} onAddToFavorites={handleAddToFavorites} />
           ))}
-       </div>
+        </div>
       )}
     </div>
   );

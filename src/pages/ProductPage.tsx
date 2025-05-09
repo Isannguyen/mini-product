@@ -83,6 +83,7 @@ const ProductPage: React.FC = () => {
         </select>
       </div>
 
+      <h2>{selectedCategory?selectedCategory:'All product'}</h2>
 
       <div className="product-list">
         {filteredProducts.length === 0 ? (
