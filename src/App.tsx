@@ -11,14 +11,12 @@ const App: React.FC = () => {
     <Router>
       <div className="container">
           <Sidebar />
-          <div className="sidebar"></div>
-          <div className="content">
-            <Routes>
+          
+          <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/products" element={<ProductPage />} />
               <Route path="/favorites" element={<ProductFavoritePage />} />
             </Routes>
-          </div>
         </div>
 
     </Router>

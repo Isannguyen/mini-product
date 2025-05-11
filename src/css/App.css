@@ -6,14 +6,7 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 230px auto;
+  grid-template-columns:auto 1fr;
 }
-
-
-.container .content {
-  display: block; 
-  padding: 20px;
-}
-
 
 

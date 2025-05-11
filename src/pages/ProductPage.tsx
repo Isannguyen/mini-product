@@ -29,15 +29,6 @@ const ProductPage: React.FC = () => {
     }
   }
 
-  const handleAddToFavorites = (product: any) => {
-    const currentFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-
-    if (!currentFavorites.find((item: any) => item === product.id)) {
-      currentFavorites.push(product.id);
-      localStorage.setItem('favorites', JSON.stringify(currentFavorites)); 
-    }
-  };
-
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
       const value =  e.target.value
 
@@ -90,7 +81,7 @@ const ProductPage: React.FC = () => {
           <h1>No product found</h1>
         ):(
           filteredProducts.map(product =>(
-            <ProductCard key={product.id} onAddToFavorites={handleAddToFavorites} product={product}></ProductCard>
+            <ProductCard key={product.id}  product={product}></ProductCard>
           ))
         )}
       

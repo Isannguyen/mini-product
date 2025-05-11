@@ -25,20 +25,16 @@ const ProductFavoritePage: React.FC = () => {
     }
   }, []); 
 
-  const handleAddToFavorites = (product: any) => {
-    console.log('Product added to favorites', product);
-  };
-
   return (
     <div>
       <h2>Favorite Products</h2>
 
       {favoriteProducts.length === 0 ? (
-        <p>No favorite products yet.</p>
+        <h3>No favorite products yet.</h3>
       ) : (
         <div className="product-list">
           {favoriteProducts.map((product) => (
-            <ProductCard key={product.id} product={product} onAddToFavorites={handleAddToFavorites} />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       )}
