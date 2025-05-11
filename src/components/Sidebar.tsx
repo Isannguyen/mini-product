@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import '../css/Sidebar.css'; 
 import Icon from '@mdi/react';
 import { mdiHomeVariantOutline,mdiMenu,mdiShoppingOutline,mdiHeartOutline } from '@mdi/js';
@@ -30,31 +30,41 @@ const Sidebar: React.FC = () => {
       </ul>
 
       <ul>
-        <li className={navLink==='home'?'active':''} onClick={()=>setLink('home')}> 
-            <Link to="/">
-              <Icon className="icon" path={mdiHomeVariantOutline} size={1}></Icon>
-              <span>Home</span>
-            </Link>
+        <li > 
+            <NavLink 
+                to="/"  
+                className={({ isActive }) => (isActive ? 'active' : '')}
+                end
+              >
+                <Icon className="icon" path={mdiHomeVariantOutline} size={1}></Icon>
+                <span>Home</span>
+            </NavLink>
         </li>
       </ul>
 
       <ul>
-        <li className={navLink==='product'?'active':''} onClick={()=>setLink('product')}>
-            <Link to="/products">
+        <li>
+            <NavLink 
+              to="/products"  
+              className={({ isActive }) => (isActive ? 'active' : '')}
+              end
+            >
               <Icon className="icon" path={mdiShoppingOutline} size={1}></Icon>
               <span>Product</span>
-            </Link>
+            </NavLink>
         </li>
       </ul>
 
        <ul>
-        <li className={navLink==='favorite'?'active':''} onClick={()=>setLink('favorite')}>
-          <div className="nav-item">
-            <Link to="/favorites">
-              <Icon className="icon" path={mdiHeartOutline} size={1}></Icon>
-              <span>Product Favorite</span>
-            </Link>
-          </div> 
+        <li>
+            <NavLink 
+              to="/favorites"  
+              className={({ isActive }) => (isActive ? 'active' : '')}
+              end
+              >
+                <Icon className="icon" path={mdiHeartOutline} size={1}></Icon>
+                <span>Product Favorite</span>
+            </NavLink>
         </li>
       </ul>
     </nav>

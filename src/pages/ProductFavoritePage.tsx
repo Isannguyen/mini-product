@@ -30,7 +30,7 @@ const ProductFavoritePage: React.FC = () => {
       <h2>Favorite Products</h2>
 
       {favoriteProducts.length === 0 ? (
-        <h3>No favorite products yet.</h3>
+        <h1 style={{padding:"0 20px"}}>No favorite products yet.</h1>
       ) : (
         <div className="product-list">
           {favoriteProducts.map((product) => (

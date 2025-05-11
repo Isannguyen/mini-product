@@ -73,7 +73,7 @@
     transition: 300ms ease-in-out;
 }
 
-#sidebar ul li.active a span, #sidebar ul li.active .icon {
+#sidebar ul li a.active span, #sidebar ul li a.active .icon {
    color:var(--accent-clr)
 }
 
